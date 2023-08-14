@@ -1,3 +1,5 @@
+from queue import Queue
+
 class Node:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -46,15 +48,16 @@ class Tree:
         return arr
 
     def tree_bfs(self):
-        queue = [self.root]
+        queue = Queue()
+        queue.put(self.root)
         arr = []
-        while len(queue) != 0:
-            now = queue.pop(0)
+        while not queue.empty():
+            now = queue.get()
             if now is None:
                 continue
             arr.append(now.value)
-            queue.append(now.left)
-            queue.append(now.right)
+            queue.put(now.left)
+            queue.put(now.right)
 
         return arr
 
