@@ -19,17 +19,12 @@ class Node:
             else:
                 self.right.add_value(value)
 
-    def left_this_right_way(self):
-        arr = []
+    def left_this_right_way(self, arr):
         if self.left is not None:
-            for value in self.left.left_this_right_way():
-                arr.append(value)
+            self.left.left_this_right_way(arr)
         arr.append(self.value)
         if self.right is not None:
-            for value in self.right.left_this_right_way():
-                arr.append(value)
-
-        return arr
+            self.right.left_this_right_way(arr)
 
 
 class Tree:
@@ -45,7 +40,10 @@ class Tree:
             self.root.add_value(value)
 
     def tree_sort(self):
-        return self.root.left_this_right_way()
+        arr = []
+        self.root.left_this_right_way(arr)
+
+        return arr
 
 
 # Пример входных данных с доски
