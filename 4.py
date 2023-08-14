@@ -48,18 +48,16 @@ class Tree:
 
 # Пример входных данных с доски
 """
-7
-8
-5
-10
-3
-6
-9
-12
+8 5 10 3 6 9 12
 """
-elements_number = int(input())
-tree = Tree()
-for i in range(elements_number):
-    tree.add_value(int(input()))
 
-print(*tree.tree_sort())
+
+def tree_sort(arr):
+    tree = Tree()
+    for elem in arr:
+        tree.add_value(elem)
+
+    return tree.tree_sort()
+
+
+print(*tree_sort(list(map(int, input().split()))))
